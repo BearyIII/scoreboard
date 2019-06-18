@@ -2,6 +2,7 @@
 <html>
     <head>
         <link href="scoreboard.css" rel="stylesheet" type="text/css">
+        <script src="scoreboard.js"></script>
     </head>
     <body class="dark">
         Ten Player Monopoly!
@@ -32,9 +33,70 @@
                 <span class='money' id='money4'>$1500</span>
                 <div class='ownedProperties' id='ownedProperties4'></div>
             </div>
-        </div>   
+        </div>
+        <div class="wrapper">
+            <div class="playerProfile" id="player5">
+                <img class='profilePic' id='picture5' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="playerName5">Player 5</span>
+                <span class='money' id='money5'>$1500</span>
+                <div class='ownedProperties' id='ownedProperties5'></div>
+            </div>
+            <div class="playerProfile" id="player6">
+                <img class='profilePic' id='picture6' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="playerName6">Player 6</span>
+                <span class='money' id='money6'>$1500</span>
+                <div class='ownedProperties' id='ownedProperties6'></div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="playerProfile" id="player7">
+                <img class='profilePic' id='picture7' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="playerName7">Player 7</span>
+                <span class='money' id='money7'>$1500</span>
+                <div class='ownedProperties' id='ownedProperties7'></div>
+            </div>
+            <div class="playerProfile" id="player8">
+                <img class='profilePic' id='picture8' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="playerName8">Player 8</span>
+                <span class='money' id='money8'>$1500</span>
+                <div class='ownedProperties' id='ownedProperties8'></div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="playerProfile" id="player9">
+                <img class='profilePic' id='picture9' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="playerName9">Player 9</span>
+                <span class='money' id='money9'>$1500</span>
+                <div class='ownedProperties' id='ownedProperties9'></div>
+            </div>
+            <div class="playerProfile" id="player10">
+                <img class='profilePic' id='picture10' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="playerName10">Player 10</span>
+                <span class='money' id='money10'>$1500</span>
+                <div class='ownedProperties' id='ownedProperties10'></div>
+            </div>
+        </div> 
     </body>
-    <script src="scoreboard.js">
-    
+    <script>
+        // TODO implment add/remove player system.
+        // Players to be hardcoded for now.
+        var Aflac_Duck = new Player( 'Aflac_Duck' , 2 );
+        UpdateProfile(Aflac_Duck);
+        var Creeper = new Player( 'Creeper' , 1 );
+        UpdateProfile(Creeper);
+        var Giggit = new Player( 'Giggit', 3 );
+        UpdateProfile(Giggit);
+        var Moo_Can = new Player('Moo_Can', 4 );
+        UpdateProfile(Moo_Can);
+        var Plastic_Cone = new Player('Plastic_Cone', 5 );
+        UpdateProfile(Plastic_Cone);
+        var Pokeball = new Player('Pokeball', 6 );
+        UpdateProfile(Pokeball);
+        var Rubberband = new Player('Rubberband', 7 );
+        UpdateProfile(Rubberband);
+        var Rubiks_Cube = new Player('Rubiks_Cube', 8 );
+        UpdateProfile(Rubiks_Cube);
+        var Totodile = new Player('Totodile', 9 );
+        UpdateProfile(Totodile);
     </script>
 </html>

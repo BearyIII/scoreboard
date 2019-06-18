@@ -1,4 +1,5 @@
 var GameData = {
+    ActivePlayer : null,
     LastDiceRoll : 0,
     Bank : {
         ownedProperties : {
@@ -213,9 +214,10 @@ var GameData = {
 }
 
 function UpdateProfile(Player) {
-    document.getElementById('picture'+Player.ID_Number).src = Player.GetPicFile();
-    document.getElementById('playerName'+Player.ID_Number).innerHTML = Player.name;
-    document.getElementById('money'+Player.ID_Number).innerText = '$'+Player.money;
+    let id = Player.ID_Number;
+    document.getElementById( 'picture' + id ).src = Player.GetPicFile();
+    document.getElementById( 'playerName'+ id ).innerHTML = Player.name;
+    document.getElementById( 'money' + id ).innerText = '$'+Player.money;
 }
 
 
@@ -254,7 +256,7 @@ class Player {
             Pennsylvania: false,
             BnO: false,
             ShortLine: false
-        }
+        };
         this.AddOwnedProperty = function (deedName, price){
             if(this.ownedProperties.hasOwnProperty(deedName)) {
                 this.ownedProperties[deedName] = true;
@@ -268,8 +270,12 @@ class Player {
                 }
             }
         };
+        this.PayRent = function (deed){
+            let rent = GameData.Deed[deed].Rent;
+            console.log(deed + ' rent is ' + rent);
+        };
         this.GetPicFile = function () {
             return this.profilePic;
-        }
+        };
     }
 }
