@@ -214,6 +214,8 @@ var GameData = {
 
 function UpdateProfile(Player) {
     document.getElementById('picture'+Player.ID_Number).src = Player.GetPicFile();
+    document.getElementById('playerName'+Player.ID_Number).innerHTML = Player.name;
+    document.getElementById('money'+Player.ID_Number).innerText = '$'+Player.money;
 }
 
 
