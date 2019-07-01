@@ -1,6 +1,19 @@
 var GameData = {
     ActivePlayer : null,
+    Players : {},
+    CounterParty: null,
     LastDiceRoll : 0,
+    EventSpace : {
+        Go: true,
+        CommunityChest: true,
+        IncomeTax: true,
+        Chance: true,
+        JustVisiting: true,
+        InJail: true,
+        FreeParking: true,
+        GoToJail: true,
+        LuxuryTax: true
+    },
     Bank : {
         ownedProperties : {
             Mediterranean: true,
@@ -24,16 +37,17 @@ var GameData = {
             NorthCarolina: true,
             Pennsylvania: true,
             ParkPlace: true,
-            Boardwalk: true
-        },
-        ownedRailRoads : {
-            Reading: true,
-            Pennsylvania: true,
-            BnO: true,
-            ShortLine: true
+            Boardwalk: true,
+            Reading_RR: true,
+            Pennsylvania_RR: true,
+            BnO_RR: true,
+            ShortLine_RR: true,
+            ElectricCompany: true,
+            WaterWorks: true
         },
         HousingStock : 32,
-        HotelStock : 12
+        HotelStock : 12,
+        Money : 999999999999
     },
     Deed : {
         Mediterranean : {
@@ -90,7 +104,7 @@ var GameData = {
             Group: 'orange',
             Houses: [28,70,200,550,750,950]
         },
-        Tenessee: {
+        Tennessee: {
             Price: 180,
             Rent: 14,
             Group: 'orange',
@@ -168,13 +182,35 @@ var GameData = {
             Group: 'blue',
             Houses: [100,200,600,1400,1700,2000]
         },
-        Railroad: {
+        Reading_RR: {
+            isRailRoad: true,
             Price: 200,
-            Rent: [25,50,100,200]
+            Rent: 25
         },
-        Utility: {
+        Pennsylvania_RR: {
+            isRailRoad: true,
+            Price: 200,
+            Rent: 25
+        },
+        BnO_RR: {
+            isRailRoad: true,
+            Price: 200,
+            Rent: 25
+        },
+        ShortLine_RR: {
+            isRailRoad: true,
+            Price: 200,
+            Rent: 25
+        },
+        ElectricCompany: {
+            isUtility: true,
             Price: 150,
-            Rent: [4,10]
+            Rent: 1
+        },
+        WaterWorks: {
+            isUtility: true,
+            Price: 150,
+            Rent: 1
         }
     },
     ColorGroup : {
@@ -210,22 +246,150 @@ var GameData = {
             monopoly : 2,
             housePrice : 200
         }
+    },
+    locations : ['Go', 'Mediterranean', 'CommunityChest', 'Baltic', 'IncomeTax', 'Reading_RR',
+                'Oriental', 'Chance', 'Vermont', 'Connecticut', 'JustVisiting', 
+                'SaintCharlesPlace', 'ElectricCompany', 'States', 'Virginia',
+                'Pennsylvania_RR', 'SaintJamesPlace', 'CommunityChest', 'Tennessee', 'NewYork',
+                'FreeParking', 'Kentucky', 'Chance', 'Indiana', 'Illinois', 'BnO_RR',
+                'Atlantic', 'Ventnor', 'WaterWorks', 'MarvinGardens', 'GoToJail',
+                'Pacific', 'NorthCarolina', 'CommunityChest', 'Pennsylvania', 'ShortLine_RR',
+                'Chance', 'ParkPlace', 'LuxuryTax', 'Boardwalk'],
+    AddPlayer(player) {
+        
+        GameData.Players[(player.name)] = player;
+    },
+    GetLocation : function (index) {
+        return GameData.locations[index];
+    },
+    isBankOwned : function (deedName) {
+        return GameData.Bank.ownedProperties[deedName];
+    },
+    isEventSpace : function (boardSpaceName) {
+        return GameData.EventSpace[boardSpaceName];
+    },
+    BuyDeedFromBank : function (deedName) {
+        let price = GameData.Deed[deedName].Price;
+        GameData.Bank.ownedProperties[deedName] = false;
+        GameData.ActivePlayer.money -= price;   
+        GameData.ActivePlayer.ownedProperties[deedName] = true;
+        GameData.ActivePlayer.ownedRailRoads[deedName] = true;
+        GameData.ActivePlayer.ownedUtilities[deedName] = true;
+        UpdateProfile(this.ActivePlayer);
+    },
+    GetBaseRent : function (deedName) {
+        return GameData.Deed[deedName].Rent;
+    },
+    FindOwner : function (deedName) {
+        for(p in GameData.Players) {
+            if(GameData.Players[p].isPlayerOwned(deedName)) {
+                GameData.CounterParty = GameData.Players[p];
+                //console.log('Found Owner of ' + deedName + ': ' + GameData.Players[p].name);
+                break;
+            }
+        }
+        return GameData.CounterParty;
+    },
+    IsLocationDeed : function(location) {
+        if(location == 5 || location == 12 || location == 15 || location == 25 || location == 28|| location == 35) {
+            return true;
+        }
+        let loc = GameData.GetLocation(location);
+        return GameData.Deed.hasOwnProperty(loc);
     }
+}
+
+function UpdateStatus(msg) {
+    document.getElementById('status').innerHTML = msg;
 }
 
 function UpdateProfile(Player) {
     let id = Player.ID_Number;
+    let owned = Player.GetOwnedProperties();
     document.getElementById( 'picture' + id ).src = Player.GetPicFile();
-    document.getElementById( 'playerName'+ id ).innerHTML = Player.name;
+    document.getElementById( 'player'+id+'Name' ).innerHTML = Player.name;
     document.getElementById( 'money' + id ).innerText = '$'+Player.money;
+    document.getElementById('currentLocation'+id).innerHTML = GameData.GetLocation(Player.location);
+    document.getElementById('ownedProperties'+id).innerHTML = owned;
 }
 
+function PlayerClickHandler(event){
+    console.log(window[event.target.id + 'Name'].innerHTML);
+    let playerName = (window[event.target.id + 'Name'].innerHTML);
+    let player = GameData.Players[playerName];
+    SetActivePlayer(player);
+    UpdateStatus(GameData.ActivePlayer.name + ' is active.');
+}
+
+function BuyClickHandler() {
+    if(GameData.ActivePlayer !== null) {
+        let activePlayerName = GameData.ActivePlayer.name;
+        let loc = GameData.ActivePlayer.location;
+        let boardSpaceName = GameData.GetLocation(loc);
+        console.log(activePlayerName + ' is on ' + boardSpaceName);
+        if(GameData.IsLocationDeed(loc)) {
+            if(GameData.isBankOwned(boardSpaceName)) {
+                GameData.BuyDeedFromBank(boardSpaceName);
+            }
+        }
+    }
+}
+
+function MoveTokenClickHandler() {
+    let roll = parseInt(document.getElementById('lastRoll').value);
+    if(GameData.ActivePlayer !== null){
+        if(roll >=2 && roll <=12) {
+            GameData.LastDiceRoll = roll;
+            let currentLocationName = GameData.GetLocation(GameData.ActivePlayer.location);
+            let newLocationName = GameData.GetLocation( (GameData.ActivePlayer.location + roll) % 40);
+            UpdateStatus('Moved from ' + currentLocationName + ' to ' + newLocationName);
+            GameData.ActivePlayer.location = (parseInt(roll) + GameData.ActivePlayer.location) % 40;
+            //console.log(GameData.ActivePlayer.location);
+            if(!GameData.isBankOwned(newLocationName) && !GameData.isEventSpace(newLocationName)) {
+                let owner = GameData.FindOwner(newLocationName);
+                console.log(owner.name + ' owns this property.');
+            }
+        } else {
+            console.log('invalid roll!');
+        };
+        UpdateProfile(GameData.ActivePlayer);
+    }
+    
+}
+
+function PayRentClickHandler() {
+    if(GameData.CounterParty !== null && GameData.ActivePlayer !== null) {
+        let activePlayer = GameData.ActivePlayer;
+        let counterParty = GameData.CounterParty;
+        let deedName = GameData.GetLocation(GameData.ActivePlayer.location);
+        let rent = GameData.GetBaseRent(deedName) * counterParty.GetMultiplier(deedName);
+        console.log(activePlayer.name + ' ' + counterParty.name + ' ' + deedName + ' ' + rent);
+        activePlayer.money -= rent;
+        counterParty.money += rent;
+        UpdateProfile(GameData.ActivePlayer);
+        UpdateProfile(GameData.CounterParty);
+        GameData.CounterParty = null;
+    }
+}
+
+function TestClickHandler(event){
+    console.log(event.target.id + 'clicked');
+}
+
+function SetActivePlayer(Player) {
+    if(GameData.ActivePlayer !== null) {
+        document.getElementById('player'+GameData.ActivePlayer.ID_Number).style.backgroundColor = 'black';
+    }
+    GameData.ActivePlayer = Player;
+    document.getElementById('player'+Player.ID_Number).style.backgroundColor = 'RGBA(255,255,255,.2)';
+}
 
 class Player {
     constructor(name, id) {
         this.name = name;
         this.ID_Number = id;
         this.profilePic = 'images/' + name + '.png';
+        this.location = 0;
         this.money = 1500;
         this.ownedProperties = {
             Mediterranean: false,
@@ -237,7 +401,7 @@ class Player {
             Virginia: false,
             States: false,
             SaintJamesPlace: false,
-            Tenessee: false,
+            Tennessee: false,
             NewYork: false,
             Kentucky: false,
             Indiana: false,
@@ -252,10 +416,14 @@ class Player {
             Boardwalk: false
         };
         this.ownedRailRoads = {
-            Reading: false,
-            Pennsylvania: false,
-            BnO: false,
-            ShortLine: false
+            Reading_RR: false,
+            Pennsylvania_RR: false,
+            BnO_RR: false,
+            ShortLine_RR: false
+        };
+        this.ownedUtilities = {
+            ElectricCompany: false,
+            WaterWorks: false
         };
         this.AddOwnedProperty = function (deedName, price){
             if(this.ownedProperties.hasOwnProperty(deedName)) {
@@ -270,9 +438,69 @@ class Player {
                 }
             }
         };
+        this.calcTotalAssets = function () {
+            let totalAssets = this.money;
+            const op = this.ownedProperties;
+            const orr = this.ownedRailRoads;
+            const ou = this.ownedUtilities;
+            for(const p in op) {
+                if(op[p]) {
+                    totalAssets += GameData.Deed[p].Price;
+                }
+            };
+            for(const rr in orr) {
+                if(op[rr]) {
+                    let p = (rr + '_RR');
+                    totalAssets += GameData.Deed[p].Price;
+                }
+            };
+            for(const u in ou) {
+                if(ou[u]) {
+                    totalAssets += GameData.Deed[u].Price;
+                }
+            };
+            return totalAssets;
+        };
+        this.GetMultiplier = function (deedName) {
+            let multiplier = 1;
+            if(GameData.Deed[deedName].isRailRoad) {
+                let index = -1;
+                for(const rr in this.ownedRailRoads) {
+                    if(this.ownedRailRoads[rr]) {
+                        index++;
+                    }
+                }
+                multiplier = [1,2,4,8][index];
+            }
+
+            if(GameData.Deed[deedName].isUtility) {
+                let index = -1;
+                for(const u in this.ownedUtilities) {
+                    if(this.ownedUtilities[u]) {
+                        index++;
+                    }
+                }
+                multiplier = GameData.LastDiceRoll * [4,10][index];
+            }
+
+            return multiplier;
+        }
+        this.GetOwnedProperties = function () {
+            let op = this.ownedProperties;
+            let results = '';
+            for(const p in op) {
+                if(op[p]) {
+                    results += (p + ',&nbsp;');
+                }
+            }
+            return results;
+        };
         this.PayRent = function (deed){
             let rent = GameData.Deed[deed].Rent;
             console.log(deed + ' rent is ' + rent);
+        };
+        this.isPlayerOwned = function (deedName) {
+            return this.ownedProperties[deedName];
         };
         this.GetPicFile = function () {
             return this.profilePic;
