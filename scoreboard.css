@@ -1,16 +1,32 @@
-.dark{
+img {
+    max-width: 100%;
+}
+
+.dark {
     background-color: black;
     color: darkgray;
     align-content: center;
 }
-.Panel-Left{
+
+.Panel-Left {
     float: left;
 }
-.Panel-Right{
+
+.Panel-Right {
     float: right;
     width: 33%;
 }
-.UIButton{
+
+.UIPanel {
+    float: left;
+    display: block;
+}
+
+.inputs {
+    display: block;
+}
+
+.UIButton {
     width: 50px;
     height: 50px;
     font-size: 16pt;
@@ -18,17 +34,53 @@
     float: left;
     color: white;
     margin: 2px;
+    padding: 2px;
 }
-#BuyButton{
+
+.UIButton:hover {
+    color: yellow;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+#BuyButton {
     background-color: green;
 }
-#PayRentButton{
+
+#BuyButton:hover {
+    background-color: rgba(0, 128, 0, 0.5);
+}
+
+#PayRentButton {
     background-color: red;
 }
-#MoveTokenButton{
+
+#PayRentButton:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+#MoveTokenButton {
     background-color: darkblue;
 }
-.playerProfile{
+
+#MoveTokenButton:hover {
+    background-color: rgb(37, 69, 248);
+}
+
+#title {
+    float: left;
+}
+
+#status {
+    float: left;
+    font-size: 24pt;
+    height: 100px;
+}
+
+#board {
+    width: 420px;
+}
+
+.playerProfile {
     width: 400px;
     height: 160px;
     border-style: inset;
@@ -39,22 +91,26 @@
     padding: 8px;
     margin: 4px;
 }
-.playerName{
+
+.playerName {
     font-size: 25pt;
     font-stretch: 80%;
 }
-.money{
+
+.money {
     font-size: 40pt;
     color: limegreen;
     float: right;
 }
-.profilePic{
+
+.profilePic {
     width: 64px;
     height: 64px;
     float: left;
     padding-right: 8px;
 }
-.wrapper{
+
+.wrapper {
     box-sizing: content-box;
     width: 852px;
     height: 180px;

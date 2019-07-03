@@ -1,211 +1,237 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="scoreboard.css" rel="stylesheet" type="text/css">
-        <script src="scoreboard.js"></script>
-    </head>
-    <body class="dark">
-        
-        <div class="Panel-Left" style="width:860px">
-            <div class="wrapper">
-                <div class="playerProfile" id="player1">
-                    <img class='profilePic' id='picture1' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player1Name">Player 1</span>
-                    <span class='money' id='money1'>$1500</span>
-                    <div class='currentLocation'>
-                        <span id='label'>Location:&nbsp;&nbsp;</span>
-                        <span id='currentLocation1'>Go</span>
-                    </div>
-                    <br><div class='ownedProperties'>
-                            <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                            <span id='ownedProperties1'>none</span>
-                    </div>
+
+<head>
+    <link href="scoreboard.css" rel="stylesheet" type="text/css">
+    <script src="scoreboard.js"></script>
+</head>
+
+<body class="dark">
+
+    <div class="Panel-Left" style="width:860px">
+        <div class="wrapper">
+            <div class="playerProfile" id="player1">
+                <img class='profilePic' id='picture1' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player1Name">Player 1</span>
+                <span class='money' id='money1'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation1'>Go</span>
                 </div>
-                <div class="playerProfile" id="player2">
-                    <img class='profilePic' id='picture2' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player2Name">Player 2</span>
-                    <span class='money' id='money2'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation2'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties2'>none</span>
-                        </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties1'>none</span>
                 </div>
             </div>
-            <div class="wrapper">
-                <div class="playerProfile" id="player3">
-                    <img class='profilePic' id='picture3' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player3Name">Player 3</span>
-                    <span class='money' id='money3'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation3'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties3'>none</span>
-                        </div>
+            <div class="playerProfile" id="player2">
+                <img class='profilePic' id='picture2' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player2Name">Player 2</span>
+                <span class='money' id='money2'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation2'>Go</span>
                 </div>
-                <div class="playerProfile" id="player4">
-                    <img class='profilePic' id='picture4' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player4Name">Player 4</span>
-                    <span class='money' id='money4'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation4'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties4'>none</span>
-                        </div>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="playerProfile" id="player5">
-                    <img class='profilePic' id='picture5' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player5Name">Player 5</span>
-                    <span class='money' id='money5'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation5'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties5'>none</span>
-                        </div>
-                </div>
-                <div class="playerProfile" id="player6">
-                    <img class='profilePic' id='picture6' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player6Name">Player 6</span>
-                    <span class='money' id='money6'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation6'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties6'>none</span>
-                        </div>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="playerProfile" id="player7">
-                    <img class='profilePic' id='picture7' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player7Name">Player 7</span>
-                    <span class='money' id='money7'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation7'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties7'>none</span>
-                        </div>
-                </div>
-                <div class="playerProfile" id="player8">
-                    <img class='profilePic' id='picture8' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player8Name">Player 8</span>
-                    <span class='money' id='money8'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation8'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties8'>none</span>
-                        </div>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="playerProfile" id="player9">
-                    <img class='profilePic' id='picture9' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player9Name">Player 9</span>
-                    <span class='money' id='money9'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation9'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties9'>none</span>
-                        </div>
-                </div>
-                <div class="playerProfile" id="player10">
-                    <img class='profilePic' id='picture10' src='images/testProfilePic.png'></img>
-                    <span class='playerName' id="player10Name">Player 10</span>
-                    <span class='money' id='money10'>$1500</span>
-                    <div class='currentLocation'>
-                            <span id='label'>Location:&nbsp;&nbsp;</span>
-                            <span id='currentLocation10'>Go</span>
-                        </div>
-                        <br><div class='ownedProperties'>
-                                <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
-                                <span id='ownedProperties10'>none</span>
-                        </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties2'>none</span>
                 </div>
             </div>
         </div>
-        <div class="Panel-Right">
-            <span id="title">Player Monopoly!</span> 
-            <br><span id="status">Right Panel</span>
-            <br><div>Roll:&nbsp;<input id='lastRoll'></div>
+        <div class="wrapper">
+            <div class="playerProfile" id="player3">
+                <img class='profilePic' id='picture3' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player3Name">Player 3</span>
+                <span class='money' id='money3'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation3'>Go</span>
+                </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties3'>none</span>
+                </div>
+            </div>
+            <div class="playerProfile" id="player4">
+                <img class='profilePic' id='picture4' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player4Name">Player 4</span>
+                <span class='money' id='money4'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation4'>Go</span>
+                </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties4'>none</span>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="playerProfile" id="player5">
+                <img class='profilePic' id='picture5' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player5Name">Player 5</span>
+                <span class='money' id='money5'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation5'>Go</span>
+                </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties5'>none</span>
+                </div>
+            </div>
+            <div class="playerProfile" id="player6">
+                <img class='profilePic' id='picture6' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player6Name">Player 6</span>
+                <span class='money' id='money6'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation6'>Go</span>
+                </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties6'>none</span>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="playerProfile" id="player7">
+                <img class='profilePic' id='picture7' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player7Name">Player 7</span>
+                <span class='money' id='money7'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation7'>Go</span>
+                </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties7'>none</span>
+                </div>
+            </div>
+            <div class="playerProfile" id="player8">
+                <img class='profilePic' id='picture8' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player8Name">Player 8</span>
+                <span class='money' id='money8'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation8'>Go</span>
+                </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties8'>none</span>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="playerProfile" id="player9">
+                <img class='profilePic' id='picture9' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player9Name">Player 9</span>
+                <span class='money' id='money9'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation9'>Go</span>
+                </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties9'>none</span>
+                </div>
+            </div>
+            <div class="playerProfile" id="player10">
+                <img class='profilePic' id='picture10' src='images/testProfilePic.png'></img>
+                <span class='playerName' id="player10Name">Player 10</span>
+                <span class='money' id='money10'>$1500</span>
+                <div class='currentLocation'>
+                    <span id='label'>Location:&nbsp;&nbsp;</span>
+                    <span id='currentLocation10'>Go</span>
+                </div>
+                <br>
+                <div class='ownedProperties'>
+                    <span id='label'>Owned Properties:&nbsp;&nbsp;</span>
+                    <span id='ownedProperties10'>none</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Panel-Right">
+        <span id="title">Monopoly Scoreboard</span>
+        <br>
+        <div class='inputs'>
+            DiceRoll:&nbsp;<input id='lastRoll' style="width:40px;">
             <br>
-            <div class='UIPanel'>
-                <div class="UIButton" id="BuyButton">Buy</div>
-                <div class="UIButton" id="PayRentButton">Pay Rent</div>
-                <div class="UIButton" id="MoveTokenButton">Move</div>
-            </div>
-            
+            Pay/Take:&nbsp;<input id='payTake' style="width:40px;">
         </div>
-    </body>
-    <script>
-        // TODO implment add/remove player system.
-        // Players to be hardcoded for now.
-        GameData.AddPlayer(new Player( 'Creeper' , 1 ));
-        UpdateProfile(GameData.Players['Creeper']);
 
-        GameData.AddPlayer(new Player( 'Aflac_Duck' , 2 ));
-        UpdateProfile(GameData.Players['Aflac_Duck']);
+        <div class='UIPanel'>
+            <div class="UIButton" id="MoveTokenButton">Move</div>
+            <div class="UIButton" id="BuyButton">Buy</div>
+            <div class="UIButton" id="PayRentButton">Pay Rent</div>
+            <div class="UIButton" id="PayBankButton">Pay</div>
+            <div class="UIButton" id="TakeBankButton">Take</div>
+        </div>
+        <span id="status">Status Message</span>
+        <div class='board' id='board'>
+            <img src='images/board.png' />
+        </div>
+        <div class='PlayerRanking' id='PlayerRanking'></div>
+    </div>
 
-        GameData.AddPlayer(new Player( 'Giggit', 3 ));
-        UpdateProfile(GameData.Players['Giggit']);
+</body>
+<script>
+    // TODO implment add/remove player system.
+    // Players to be hardcoded for now.
+    GameData.AddPlayer(new Player('Creeper', 1));
+    UpdateProfile(GameData.Players['Creeper']);
 
-        GameData.AddPlayer(new Player( 'Moo_Can', 4 ));
-        UpdateProfile(GameData.Players['Moo_Can']);
+    GameData.AddPlayer(new Player('Aflac_Duck', 2));
+    UpdateProfile(GameData.Players['Aflac_Duck']);
 
-        GameData.AddPlayer(new Player( 'Plastic_Cone', 5 ));
-        UpdateProfile(GameData.Players['Plastic_Cone']);
+    GameData.AddPlayer(new Player('Giggit', 3));
+    UpdateProfile(GameData.Players['Giggit']);
 
-        GameData.AddPlayer(new Player( 'Pokeball', 6 ));
-        UpdateProfile(GameData.Players['Pokeball']);
+    GameData.AddPlayer(new Player('Moo_Can', 4));
+    UpdateProfile(GameData.Players['Moo_Can']);
 
-        GameData.AddPlayer(new Player( 'Rubberband', 7 ));
-        UpdateProfile(GameData.Players['Rubberband']);
+    GameData.AddPlayer(new Player('Plastic_Cone', 5));
+    UpdateProfile(GameData.Players['Plastic_Cone']);
 
-        GameData.AddPlayer(new Player( 'Rubiks_Cube', 8 ));
-        UpdateProfile(GameData.Players['Rubiks_Cube']);
-        
-        GameData.AddPlayer(new Player( 'Totodile', 9 ));
-        UpdateProfile(GameData.Players['Totodile']);
+    GameData.AddPlayer(new Player('Pokeball', 6));
+    UpdateProfile(GameData.Players['Pokeball']);
 
-        GameData.AddPlayer(new Player( 'Magic_8', 10 ));
-        UpdateProfile(GameData.Players['Magic_8']);
+    GameData.AddPlayer(new Player('Rubberband', 7));
+    UpdateProfile(GameData.Players['Rubberband']);
 
-        for(let i = 1; i<11; i++) {
-            document.getElementById('player'+i).addEventListener('click', PlayerClickHandler, false);
-        }
+    GameData.AddPlayer(new Player('Rubiks_Cube', 8));
+    UpdateProfile(GameData.Players['Rubiks_Cube']);
 
-        document.getElementById('BuyButton').addEventListener('click', BuyClickHandler, false);
-        document.getElementById('PayRentButton').addEventListener('click', PayRentClickHandler, false);
-        document.getElementById('MoveTokenButton').addEventListener('click', MoveTokenClickHandler, false);
+    GameData.AddPlayer(new Player('Totodile', 9));
+    UpdateProfile(GameData.Players['Totodile']);
 
-        if(GameData.ActivePlayer !== null) {
-            UpdateStatus('Active Player: ' + GameData.ActivePlayer);
-        } else {
-            UpdateStatus('Click a player to begin.');
-        }
-    </script>
+    GameData.AddPlayer(new Player('Magic_8', 10));
+    UpdateProfile(GameData.Players['Magic_8']);
+
+    for (let i = 1; i < 11; i++) {
+        document.getElementById('player' + i).addEventListener('click', PlayerClickHandler, false);
+    }
+
+    document.getElementById('BuyButton').addEventListener('click', BuyClickHandler, false);
+    document.getElementById('PayRentButton').addEventListener('click', PayRentClickHandler, false);
+    document.getElementById('MoveTokenButton').addEventListener('click', MoveTokenClickHandler, false);
+    document.getElementById('PayBankButton').addEventListener('click', PayBankClickHandler, false);
+    document.getElementById('TakeBankButton').addEventListener('click', TakeBankClickHandler, false);
+
+    if (GameData.ActivePlayer !== null) {
+        UpdateStatus('Active Player: ' + GameData.ActivePlayer);
+    } else {
+        UpdateStatus('Click a player to begin.');
+    }
+</script>
+
 </html>
